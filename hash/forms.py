@@ -8,5 +8,6 @@ class WordForm(ModelForm):
         fields = ['name']
         widgets = {'name' :TextInput(attrs={
             'class': 'form-control',
+            'id': 'word',
             'placeholder': 'Enter a word ...'
         })}

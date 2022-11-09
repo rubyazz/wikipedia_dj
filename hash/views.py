@@ -21,8 +21,16 @@ def index(request):
         word_info = {
             'word': word.name,
             'title': res["parse"]["title"],
-            'text': res["parse"]["text"]["*"]
+            'text': res["parse"]["text"]["*"],
+            'pk': word.pk,
         }
+
         all_words.append(word_info)
     context = {'all_info': all_words, 'form': form}
     return render(request, "index.html", context)
+
+
+def delete_word(request, pk):
+    word = get_object_or_404(Word, pk=pk)
+    word.delete()
+    return redirect('home')

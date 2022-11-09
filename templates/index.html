@@ -6,26 +6,32 @@
 </head>
 <body>
 <div class="container">
-    <h1>Wikipedia in django </h1>
+    <h1 style="color: grey;">Wikipedia in django </h1>
 
     <div class="container mt-5">
             <div class="col-5 offset-1">
-        <h1>Word that u want to find ?   </h1>
+            <h1 style="color:red;">Word that u want to find ?</h1>
                 <form action="" method="post">
                     {% csrf_token %}
                     {{ form.name }}
                     <input type="submit" name="send" value="Search" class="mt-2 btn btn-outline-danger w-25 ">
+<!--                    <input type="submit" name="send" value="Del" class="mt-2 btn btn-danger w-25 btn-sm">-->
                 </form>
             </div>
             <div class=" mt-5 ">
                 <h1>Information</h1>
                 {% for info in all_info %}
+                <form class="alert alert-info" method="POST" action="{% url 'delete_word' info.pk %}">
                     {% csrf_token %}
-                            <b>Title: </b>{{ info.title }}<br>
-                            <b>Content:</b> {{info.text|safe}}
-            </div>
-                {% endfor %}
+                     <input type="submit" name="send" value="Del" class="mt-2 btn btn-danger w-10 btn-sm">
 
+                        {% csrf_token %}
+                                <b>Title: </b>{{ info.title }}<br>
+                                <b>Content:</b > {{info.text|safe}}
+
+
+                </form>
+                {% endfor %}
             </div>
         </div>
     </div>
