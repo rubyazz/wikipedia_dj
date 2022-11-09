@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wiki App</title>
+</head>
+<body>
+<div class="container">
+    <h1>Wikipedia in django </h1>
+
+    <div class="container mt-5">
+            <div class="col-5 offset-1">
+        <h1>Word that u want to find ?   </h1>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.name }}
+                    <input type="submit" name="send" value="Search" class="mt-2 btn btn-outline-danger w-25 ">
+                </form>
+            </div>
+            <div class=" mt-5 ">
+                <h1>Information</h1>
+                {% for info in all_info %}
+                    {% csrf_token %}
+                            <b>Title: </b>{{ info.title }}<br>
+                            <b>Content:</b> {{info.text|safe}}
+            </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</html>
